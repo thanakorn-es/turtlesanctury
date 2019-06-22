@@ -1,0 +1,10 @@
+//@version=3
+strategy("SMA Cross", overlay=true)
+
+longCondition = crossover(sma(close,14), sma(close,28))
+if(longCondition)
+  strategy.entry("Long Entry Id", strategy.long)
+ 
+shortCondition = crossunder(sma(close,14), sma(close,28))
+if(shortCondition)
+  strategy.entry("Short Entry Id", strategy.short)
