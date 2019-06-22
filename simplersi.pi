@@ -1,0 +1,13 @@
+//@version=3
+strategy("Simple RSI", overlay=true, initial_capital=1000, currency='USD')
+
+fromYear = year > 2014
+toYear = year < 2019
+
+longCondition = rsi(close,21) < 30
+closeCondition = rsi(close,21) > 70
+
+if( longCondition and fromYear and toYear )
+  strategy.entry("Long 1", strategy.long)
+if( closeCondition )
+  strategy.close("Long 1")
